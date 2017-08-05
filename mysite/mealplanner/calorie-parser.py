@@ -9,7 +9,7 @@ baseURL = "https://hdh.ucsd.edu/DiningMenus/default.aspx?i="
 diningHallCodes = {'64':"64", 'cafev':"18", 'cv':"24", 'foodworx':"11", 'ovt':"05", 'pines':"01" }
 
 def populateList(diningHall):
-	
+	""" Populates and returns a dictionary of food with the dining hall given """
 	foodList = {}
 
 	# Finding the correct url of the passed in dining hall
@@ -37,6 +37,8 @@ def populateList(diningHall):
 
 			# Adding the food to the dictionary
 			foodList[name] = None
+
+	return foodList
 
 # Main Method
 if __name__ == "__main__":

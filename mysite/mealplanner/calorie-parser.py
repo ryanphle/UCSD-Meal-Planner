@@ -4,6 +4,7 @@ import re
 
 # Base of url to find different dining halls
 baseURL = "https://hdh.ucsd.edu/DiningMenus/default.aspx?i="
+foodURL = "https://hdh.ucsd.edu/DiningMenus/"
 
 # Dictionary of all dining hall codes
 diningHallCodes = {'64':"64", 'cafev':"18", 'cv':"24", 'foodworx':"11", 'ovt':"05", 'pines':"01" }
@@ -35,11 +36,11 @@ def populateList(diningHall):
 			if priceMarker != -1:
 				name = name[:priceMarker]
 
-			# Adding the food to the dictionary
-			foodList[name] = None
+			# Adding the food name to the dictionary
+			foodList[name] = foodURL + listItem.find('a')['href'].encode('utf-8')
 
 	return foodList
 
 # Main Method
 if __name__ == "__main__":
-	populateList('pines');
+	print(populateList('pines'))

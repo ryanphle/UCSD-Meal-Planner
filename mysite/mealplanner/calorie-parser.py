@@ -61,7 +61,7 @@ def findFoodCals(foodDict, calorieLimit):
 			# Printing the error if thrown
 			print(e)
 			return
-
+			
 		# Finding the calories in the list
 		calories = soup.find('span', {"style" : "font-weight:bold;"}).string
 
@@ -73,9 +73,9 @@ def findFoodCals(foodDict, calorieLimit):
 		if calories <= calorieLimit:
 			newFoodList[key] = calories
 		
-		return newFoodList
+	return newFoodList
 
 # Main Method
 if __name__ == "__main__":
-	list = populateList('pines')
-	findFoodCals(list, 100)
+	list = populateList('cafev')
+	print(findFoodCals(list, 10000))

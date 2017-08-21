@@ -46,38 +46,6 @@ def populateList(diningHall):
 			foodDict[name] = foodURL + listItem.find('a')['href'].encode('utf-8')
 
 	return foodDict
-'''
-def findFoodCals(foodDict, calorieLimit):
-	"""
-	Returns a sublist of food within the given calorie limit
-	"""
-
-	newFoodList = {}
-
-	# Parsing through list of food
-	for key, value in foodDict.items():
-		try:
-			nutritionPage = urlopen(value) 
-			soup = BeautifulSoup(nutritionPage, 'html.parser')
-		except Exception as e: 
-			# Printing the error if thrown
-			print(e)
-			return
-			
-		# Finding the calories in the list
-		calories = soup.find('span', {"style" : "font-weight:bold;"}).string
-
-		# Removing the Calories label and converting to int
-		numMarker = calories.find(' ')
-		calories = int(calories[numMarker+1:])
-
-		# Comparing the calories of each food to the limit
-		if calories <= calorieLimit:
-			newFoodList[key] = calories
-		
-
-	return newFoodList
-'''
 
 def findCalories(url, calorieLimit):
 	try:

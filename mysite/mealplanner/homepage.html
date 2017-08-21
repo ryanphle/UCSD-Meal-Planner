@@ -17,5 +17,10 @@
 			<button type="submit" name="submit">Submit</button>
 		</form>
 	</div>
+	<ul>
+		{% for key,value in d.items %}
+		<li>{{ key }}{{" "}}{{ value }}</li>
+		{% endfor %}
+	</ul>
 </body>
 </html>

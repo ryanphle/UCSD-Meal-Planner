@@ -20,6 +20,6 @@ def submit(request):
 	if request.method == 'POST':
 		fullMenu = populateList('64')
 		foodList = findFoods(fullMenu, 200)
-		return render_to_response('test.html')
+		return render_to_response('homepage.html', {'d':foodList})
 	else:
 		return HttpResponseRedirect(reverse('home'))

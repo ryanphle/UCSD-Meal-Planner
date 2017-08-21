@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -15,6 +17,9 @@ def home(request):
 
 @csrf_exempt
 def submit(request):
-	fullMenu = populateList('64')
-	foodList = findFoods(fullMenu, 100)
-	return render_to_response('test.html')
+	if request.method == 'POST':
+		fullMenu = populateList('64')
+		foodList = findFoods(fullMenu, 200)
+		return render_to_response('test.html')
+	else:
+		return HttpResponseRedirect(reverse('home'))

@@ -6,9 +6,16 @@
 <body>
 	<div class="inputArea">
 		<h3>Please enter the number of calories:</h3>
-		<form>
+		<form action="submit/" method="post">
+			{% csrf_token %}
+			<input type="checkbox" name="DiningHall" value="64">64
+			<input type="checkbox" name="DiningHall" value="64">Pines<br>
+			<input type="checkbox" name="DiningHall" value="64">Cafe V
+			<input type="checkbox" name="DiningHall" value="64">CV<br>
+			<input type="checkbox" name="DiningHall" value="64">Foodworx
+			<input type="checkbox" name="DiningHall" value="64">OVT<br>
 			<input type="text" name="Calories" placeholder="# of calories">
-			<input type="submit" name="Submit">
+			<button type="submit" name="submit">Submit</button>
 		</form>
 	</div>
 </body>

@@ -78,4 +78,4 @@ def findFoodCals(foodDict, calorieLimit):
 # Main Method
 if __name__ == "__main__":
 	list = populateList('cafev')
-	print(findFoodCals(list, 10000))
+	print(findFoodCals(list, 175))

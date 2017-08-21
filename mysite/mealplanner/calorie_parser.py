@@ -1,5 +1,7 @@
 from urllib import urlopen
 from bs4 import BeautifulSoup
+from multiprocessing import Pool
+from functools import partial
 import re
 
 # Base of url to find different dining halls
@@ -44,7 +46,7 @@ def populateList(diningHall):
 			foodDict[name] = foodURL + listItem.find('a')['href'].encode('utf-8')
 
 	return foodDict
-
+'''
 def findFoodCals(foodDict, calorieLimit):
 	"""
 	Returns a sublist of food within the given calorie limit
@@ -73,9 +75,47 @@ def findFoodCals(foodDict, calorieLimit):
 		if calories <= calorieLimit:
 			newFoodList[key] = calories
 		
+
+	return newFoodList
+'''
+
+def findCalories(url, calorieLimit):
+	try:
+		nutritionPage = urlopen(url) 
+		soup = BeautifulSoup(nutritionPage, 'html.parser')
+	except Exception as e: 
+		# Printing the error if thrown
+		print(e)
+		return
+
+	# Finding the calories in the list
+	calories = soup.find('span', {"style" : "font-weight:bold;"}).string
+
+	# Removing the Calories label and converting to int
+	numMarker = calories.find(' ')
+	calories = int(calories[numMarker+1:])
+
+	# Comparing the number of calories
+	if calories <= calorieLimit:
+		return calories
+
+	return -1
+
+def findFoods(foodDict, calorieLimit):
+	newFoodList = {}
+
+	p = Pool(30)
+	calories = p.map(partial(findCalories, calorieLimit=calorieLimit), foodDict.values())
+
+	p.terminate()
+	p.join()
+
+	newFoodList = dict(zip(foodDict.keys(), calories))
+	newFoodList = {key : value for key, value in newFoodList.items() if value != -1}
+
 	return newFoodList
 
 # Main Method
 if __name__ == "__main__":
-	list = populateList('cafev')
-	print(findFoodCals(list, 175))
+	list = populateList('64')
+	print(findFoods(list, 400))

@@ -48,6 +48,9 @@ def populateList(diningHall):
 	return foodDict
 
 def findCalories(url, calorieLimit):
+	"""
+	Opens a url and returns the calorie count if in the limit or -1 otherwise
+	"""
 	try:
 		nutritionPage = urlopen(url) 
 		soup = BeautifulSoup(nutritionPage, 'html.parser')
@@ -70,14 +73,20 @@ def findCalories(url, calorieLimit):
 	return -1
 
 def findFoods(foodDict, calorieLimit):
+	"""
+	Uses multiprocessing to open all links and zip lists of food names and calories into dict
+	"""
 	newFoodList = {}
 
+	# Multiprocessing part to open open link and store into a list of calories
 	p = Pool(30)
 	calories = p.map(partial(findCalories, calorieLimit=calorieLimit), foodDict.values())
 
+	# Kills zombie proccesses
 	p.terminate()
 	p.join()
 
+	# Creates new dictionary and removes all items with -1 as value
 	newFoodList = dict(zip(foodDict.keys(), calories))
 	newFoodList = {key : value for key, value in newFoodList.items() if value != -1}
 

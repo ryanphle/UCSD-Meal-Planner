@@ -9,7 +9,7 @@ baseURL = "https://hdh.ucsd.edu/DiningMenus/default.aspx?i="
 foodURL = "https://hdh.ucsd.edu/DiningMenus/"
 
 # Dictionary of all dining hall codes
-diningHallCodes = {'64':"64", 'cafev':"18", 'cv':"24", 'foodworx':"11", 'ovt':"05", 'pines':"01" }
+diningHallCodes = {'64 Degrees':"64", 'Cafe Ventanas':"18", 'Canyon Vista':"24", 'Foodworx':"11", 'OceanView Terrace':"05", 'Pines':"01" }
 
 def populateList(diningHall):
 	""" 

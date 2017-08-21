@@ -4,23 +4,37 @@
 	<title>HDH Meal Planner</title>
 </head>
 <body>
-	<div class="inputArea">
-		<h3>Please enter the number of calories:</h3>
-		<form action="/submit/" method="post">
-			<input type="checkbox" name="DiningHall" value="64">64
-			<input type="checkbox" name="DiningHall" value="64">Pines<br>
-			<input type="checkbox" name="DiningHall" value="64">Cafe V
-			<input type="checkbox" name="DiningHall" value="64">CV<br>
-			<input type="checkbox" name="DiningHall" value="64">Foodworx
-			<input type="checkbox" name="DiningHall" value="64">OVT<br>
-			<input type="text" name="Calories" placeholder="# of calories">
-			<button type="submit" name="submit">Submit</button>
-		</form>
+	<div class="center">
+		<div class="inputArea">
+			<h1>UCSD Dining Hall Calorie Tracker</h1>
+			<form action="/submit/" method="post">
+
+				<h3>Select a dining hall:</h3>
+				<input type="radio" name="dininghall" value="64">64
+				<input type="radio" name="dininghall" value="Pines">Pines<br>
+				<input type="radio" name="dininghall" value="Cafe Ventanas">Cafe V
+				<input type="radio" name="dininghall" value="Canyon Vista">CV<br>
+				<input type="radio" name="dininghall" value="Foodworx">Foodworx
+				<input type="radio" name="dininghall" value="OceanView Terrace">OVT<br>
+				<p class="required">{{ reqDiningHall }}</p>
+
+				<h3>Enter the amount of calories you want to consume:</h3>
+				<input type="text" name="calories" placeholder="# of calories">
+				<p class="required">{{ reqCalories }}</p>
+
+				<button type="submit" name="submit">Submit</button>
+
+			</form>
+		</div>
+		<ul class="results">
+			{% for key,value in d.items %}
+			<li>{{ key }}{{" "}}{{ value }}</li>
+			{% endfor %}
+		</ul>
+		<p class="noresults">{{ noresults }}</p>
 	</div>
-	<ul>
-		{% for key,value in d.items %}
-		<li>{{ key }}{{" "}}{{ value }}</li>
-		{% endfor %}
-	</ul>
 </body>
+<script type="text/javascript">
+	
+</script>
 </html>

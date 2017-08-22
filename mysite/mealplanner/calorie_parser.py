@@ -9,7 +9,8 @@ baseURL = "https://hdh.ucsd.edu/DiningMenus/default.aspx?i="
 foodURL = "https://hdh.ucsd.edu/DiningMenus/"
 
 # Dictionary of all dining hall codes
-diningHallCodes = {'64 Degrees':"64", 'Cafe Ventanas':"18", 'Canyon Vista':"24", 'Foodworx':"11", 'OceanView Terrace':"05", 'Pines':"01" }
+diningHallCodes = {'64 Degrees':"64", 'Cafe Ventanas':"18", 
+'Canyon Vista':"24", 'Foodworx':"11", 'OceanView Terrace':"05", 'Pines':"01" }
 
 def populateList(diningHall):
 	""" 
@@ -78,8 +79,8 @@ def findFoods(foodDict, calorieLimit):
 	"""
 	newFoodList = {}
 
-	# Multiprocessing part to open open link and store into a list of calories
-	p = Pool(30)
+	# Multiprocessing part to open links and store into a list of calories
+	p = Pool(10)
 	calories = p.map(partial(findCalories, calorieLimit=calorieLimit), foodDict.values())
 
 	# Kills zombie proccesses
@@ -94,5 +95,5 @@ def findFoods(foodDict, calorieLimit):
 
 # Main Method
 if __name__ == "__main__":
-	list = populateList('64')
-	print(findFoods(list, 400))
+	list = populateList('64 Degrees')
+	print(findFoods(list, 200))

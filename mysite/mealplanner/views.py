@@ -16,7 +16,7 @@ diningHallList = ['64 Degrees', 'Canyon Vista', 'OceanView Terrace',
 # Message Strings
 reqDiningHallMsg = "*** A Dining Hall is required ***"
 reqCaloriesMsg = "*** Calories are required ***"
-noResultsMsg = "Sorry, there were no items at %s that are under %d calories."
+noResultsMsg = "Sorry, there are no items at %s that are under %d calories."
 resultsMsg = "Here are the menu items at %s that are under %d calories."
 
 @csrf_exempt
@@ -57,7 +57,8 @@ def submit(request):
 				'tableVisiblity':"display: visible;"})
 		else:
 			return render_to_response('homepage.html', 
-				{'noresults':noResultsMsg%(dininghall, calories)})
+				{'noresults':noResultsMsg%(dininghall, calories), 
+				'tableVisiblity':"display: none;"})
 
 	# Redirecting user to home page if went to link directly
 	else:

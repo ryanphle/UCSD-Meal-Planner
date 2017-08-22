@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
 <head>
-	<title>HDH Meal Planner</title>
-	{% load static %}
-	<link rel="stylesheet" type="text/css" href="{% static 'mealplanner/style.css' %}" />
+	<title>UCSD Meal Planner</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
 <body>
 	<div class="center">
+		<h1 class="title">UCSD MEAL PLANNER</h1>
 		<div class="inputArea">
-			<h1>UCSD Dining Hall Calorie Tracker</h1>
 			<form action="/submit/" method="post">
 
 				<h3>Select a dining hall:</h3>
-				<input type="radio" name="dininghall" value="64 Degrees">64
-				<input type="radio" name="dininghall" value="Pines">Pines<br>
-				<input type="radio" name="dininghall" value="Cafe Ventanas">Cafe V
-				<input type="radio" name="dininghall" value="Canyon Vista">CV<br>
-				<input type="radio" name="dininghall" value="Foodworx">Foodworx
-				<input type="radio" name="dininghall" value="OceanView Terrace">OVT<br>
-				<p class="required">{{ reqDiningHall }}</p>
+				<div class="dininghalloptions">
+					<input type="radio" name="dininghall" value="64 Degrees" class="option">64
+					<input type="radio" name="dininghall" value="Pines" class="option">Pines
+					<input type="radio" name="dininghall" value="Cafe Ventanas" class="option">Cafe V
+					<input type="radio" name="dininghall" value="Canyon Vista" class="option">Canyon Vista
+					<input type="radio" name="dininghall" value="Foodworx" class="option">Foodworx
+					<input type="radio" name="dininghall" value="OceanView Terrace" class="option">OVT
+					<p class="required">{{ reqDiningHall }}</p>
+				</div>
 
 				<h3>Enter the amount of calories you want to consume:</h3>
-				<input type="text" name="calories" placeholder="# of calories">
+				<input type="text" name="calories" placeholder="Number of calories" class="calorieField">
 				<p class="required">{{ reqCalories }}</p>
 
-				<button type="submit" name="submit" onclick="showTable()">Submit</button>
-
+				<div class="center-wrapper">
+					<button type="submit" name="submit" onclick="showTable()" class="submitBtn">Find Food!</button>
+				</div>
 			</form>
 		</div>
 
-		<p class="resultsMsg">{{ resultsMsg }}</p>
+		<div>
+			<p class="resultsMsg">{{ resultsMsg }}</p>
 
-		<table id="resultsTable" class="results" style="{{ tableVisiblity }}"">
-			<tr>
-				<th>Menu Item</th>
-				<th>Calories</th>
-			</tr>
-			{% for key,value in d.items %}
+			<table id="resultsTable" class="results" style="{{ tableVisiblity }}"">
 				<tr>
-					<td>{{ key }}</td>
-					<td>{{ value }}</td>
+					<th>Menu Item</th>
+					<th>Calories</th>
 				</tr>
-			{% endfor %}
-		</table>
-		<p class="noresults">{{ noresults }}</p>
+				{% for key,value in d.items %}
+					<tr>
+						<td>{{ key }}</td>
+						<td>{{ value }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+			<p class="noresults">{{ noresults }}</p>
+		</div>
 	</div>
+	<p class="authorsNote">See this on github at this <a href="https://github.com/ryanphle/hdh-calorie-tracker">link.</a></p>
 </body>
 </html>

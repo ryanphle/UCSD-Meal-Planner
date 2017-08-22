@@ -1,0 +1,72 @@
+body {
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.authorsNote {
+	text-align: center;
+}
+.submitBtn {
+	width: 650px;
+	height: 40px;
+	font-size: 18px;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 900;
+}
+
+.calorieField {
+	width: 200px;
+	height: 40px;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.center-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.title {
+	font-family: 'Oswald', sans-serif;
+	text-align: center;
+}
+
+.inputArea {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.dininghalloptions {
+	text-align: center;
+}
+
+.required {
+	color: red;
+	text-align: center;
+}
+
+.option {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#resultsTable {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 14px;
+}
+
+.resultsMsg {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.noresults {
+	font-family: 'Quicksand', sans-serif;
+}

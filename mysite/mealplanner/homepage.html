@@ -15,21 +15,27 @@
 
 				<h3>Select a dining hall:</h3>
 				<div class="dininghalloptions">
-					<input type="radio" name="dininghall" value="64 Degrees" class="option">64
-					<input type="radio" name="dininghall" value="Pines" class="option">Pines
-					<input type="radio" name="dininghall" value="Cafe Ventanas" class="option">Cafe V
-					<input type="radio" name="dininghall" value="Canyon Vista" class="option">Canyon Vista
-					<input type="radio" name="dininghall" value="Foodworx" class="option">Foodworx
-					<input type="radio" name="dininghall" value="OceanView Terrace" class="option">OVT
+					<input type="radio" name="dininghall" value="64 Degrees" class="option"
+					{% if selectedHall == "64 Degrees" %} checked {% endif %}>64 Degrees
+					<input type="radio" name="dininghall" value="Pines" class="option"
+					{% if selectedHall == "Pines" %} checked {% endif %}>Pines
+					<input type="radio" name="dininghall" value="Cafe Ventanas" class="option"
+					{% if selectedHall == "Cafe Ventanas" %} checked {% endif %}>Cafe V
+					<input type="radio" name="dininghall" value="Canyon Vista" class="option"
+					{% if selectedHall == "Canyon Vista" %} checked {% endif %}>Canyon Vista
+					<input type="radio" name="dininghall" value="Foodworx" class="option"
+					{% if selectedHall == "Foodworx" %} checked {% endif %}>Foodworx
+					<input type="radio" name="dininghall" value="OceanView Terrace" class="option"
+					{% if selectedHall == "OceanView Terrace" %} checked {% endif %}>OVT
 					<p class="required">{{ reqDiningHall }}</p>
 				</div>
 
 				<h3>Enter the amount of calories you want to consume:</h3>
-				<input type="text" name="calories" placeholder="Number of calories" class="calorieField">
+				<input type="text" name="calories" placeholder="Number of calories" class="calorieField" value="{{ prevCalories }}">
 				<p class="required">{{ reqCalories }}</p>
 
 				<div class="center-wrapper">
-					<button type="submit" name="submit" onclick="showTable()" class="submitBtn">Find Food!</button>
+					<button type="submit" name="submit" class="submitBtn">Find Food!</button>
 				</div>
 			</form>
 		</div>
@@ -37,7 +43,7 @@
 		<div>
 			<p class="resultsMsg">{{ resultsMsg }}</p>
 
-			<table id="resultsTable" class="results" style="{{ tableVisiblity }}"">
+			<table id="resultsTable" class="results" style="{{ tableVisiblity }}">
 				<tr>
 					<th>Menu Item</th>
 					<th>Calories</th>

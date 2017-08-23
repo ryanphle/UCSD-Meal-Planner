@@ -3,6 +3,10 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
+a {
+	color: blue;
+}
+
 .authorsNote {
 	text-align: center;
 }

@@ -41,10 +41,10 @@ def submit(request):
 				'reqCalories':reqCaloriesMsg, 'tableVisiblity':"display: none;"})
 		elif dininghall not in diningHallList:
 			return render_to_response('homepage.html', {'reqDiningHall':reqDiningHallMsg, 
-				'tableVisiblity':"display: none;"})
+				'tableVisiblity':"display: none;", 'prevCalories':calories})
 		elif calories == "":
 			return render_to_response('homepage.html', {'reqCalories':reqCaloriesMsg, 
-				'tableVisiblity':"display: none;"})
+				'tableVisiblity':"display: none;", 'selectedHall':dininghall})
 
 		calories = int(calories)
 		fullMenu = populateList(dininghall)

@@ -19,6 +19,7 @@ reqCaloriesMsg = "*** Calories are required ***"
 noResultsMsg = "Sorry, there are no items at %s that are under %d calories."
 resultsMsg = "Here are the menu items at %s that are %d calories or less."
 nofoodMsg = "Sorry, %s is not serving food today."
+wrongFormatCalMsg = "*** Please enter a number here, '%s' isn't a number, fam. ***"
 
 @csrf_exempt
 def home(request):
@@ -47,7 +48,15 @@ def submit(request):
 			return render_to_response('homepage.html', {'errCalories':reqCaloriesMsg, 
 				'tableVisiblity':"display: none;", 'selectedHall':dininghall})
 
-		calories = int(calories)
+		# Checking for incorrect calorie input
+		try:
+			calories = int(calories)
+		except Exception as e: 
+			print(e)
+			return render_to_response('homepage.html', {'errCalories':wrongFormatCalMsg%calories, 
+				'tableVisiblity':"display: none;", 'selectedHall':dininghall})
+
+
 		fullMenu = populateList(dininghall)
 
 		# Checking if there are any items on the menu in the first place

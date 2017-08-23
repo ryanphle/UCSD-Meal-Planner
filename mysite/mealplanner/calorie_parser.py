@@ -25,7 +25,7 @@ def populateList(diningHall):
 
 	try:
 		namePage = urlopen(url) 
-		soup = BeautifulSoup(namePage, 'html.parser')
+		soup = BeautifulSoup(namePage, 'lxml')
 	except Exception as e: 
 		# Printing the error if thrown
 		print(e)
@@ -54,7 +54,7 @@ def findCalories(url, calorieLimit):
 	"""
 	try:
 		nutritionPage = urlopen(url) 
-		soup = BeautifulSoup(nutritionPage, 'html.parser')
+		soup = BeautifulSoup(nutritionPage, 'lxml')
 	except Exception as e: 
 		# Printing the error if thrown
 		print(e)
@@ -80,7 +80,7 @@ def findFoods(foodDict, calorieLimit):
 	newFoodList = {}
 
 	# Multiprocessing part to open links and store into a list of calories
-	p = Pool(10)
+	p = Pool(15)
 	calories = p.map(partial(findCalories, calorieLimit=calorieLimit), foodDict.values())
 
 	# Kills zombie proccesses

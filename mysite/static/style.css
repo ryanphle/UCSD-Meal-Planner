@@ -7,15 +7,23 @@ a {
 	color: blue;
 }
 
+h3 {
+	color: lightblue;
+}
+
 .authorsNote {
 	text-align: center;
 }
 .submitBtn {
-	width: 650px;
+	width: 350px;
 	height: 40px;
 	font-size: 18px;
 	font-family: 'Quicksand', sans-serif;
 	font-weight: 900;
+	border-radius: 7px;
+	background-color: lightblue;
+	color: white;
+	border: 2px solid ;
 }
 
 .calorieField {
@@ -23,15 +31,25 @@ a {
 	height: 40px;
 	font-size: 14px;
 	padding-left: 10px;
+	position: relative;
+	margin-left: 10px;
 }
+
+.calorieMessage {
+	float: left;
+	position: relative;
+}
+
+
 
 .center {
 	margin: auto;
 	width: 50%;
-    border: 3px solid black;
+    border: 3px solid lightblue;
     padding: 10px;
     background-color: white;
     border-radius: 10px;
+    margin-top: 100px;
 }
 
 .center-wrapper {
@@ -42,6 +60,7 @@ a {
 .title {
 	font-family: 'Oswald', sans-serif;
 	text-align: center;
+	color: lightblue;
 }
 
 .inputArea {
@@ -65,6 +84,7 @@ a {
 #resultsTable {
 	font-family: 'Quicksand', sans-serif;
 	font-size: 14px;
+	margin-left: 50px;
 }
 
 .resultsMsg {
@@ -73,4 +93,16 @@ a {
 
 .noresults {
 	font-family: 'Quicksand', sans-serif;
+}
+
+.menuCol {
+	width: 400px;
+}
+
+.calCol {
+	width: 250px;
+}
+
+.calRow {
+	text-align: center;
 }

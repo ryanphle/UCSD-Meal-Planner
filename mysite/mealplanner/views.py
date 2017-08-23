@@ -17,7 +17,8 @@ diningHallList = ['64 Degrees', 'Canyon Vista', 'OceanView Terrace',
 reqDiningHallMsg = "*** A Dining Hall is required ***"
 reqCaloriesMsg = "*** Calories are required ***"
 noResultsMsg = "Sorry, there are no items at %s that are under %d calories."
-resultsMsg = "Here are the menu items at %s that are under %d calories."
+resultsMsg = "Here are the menu items at %s that are %d calories or less."
+nofoodMsg = "Sorry, %s is not serving food today."
 
 @csrf_exempt
 def home(request):
@@ -50,9 +51,9 @@ def submit(request):
 		fullMenu = populateList(dininghall)
 
 		# Checking if there are any items on the menu in the first place
-		if (len(fullMenu) == 0):
+		if (fullMenu == {}):
 			return render_to_response('homepage.html', 
-				{'noresults':noResultsMsg%(dininghall, calories), 
+				{'noresults':nofoodMsg%dininghall, 
 				'tableVisiblity':"display: none;"})
 
 		foodList = findFoods(fullMenu, calories)

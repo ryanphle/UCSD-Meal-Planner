@@ -30,8 +30,11 @@
 					<p class="required">{{ reqDiningHall }}</p>
 				</div>
 
-				<h3>Enter the amount of calories you want to consume:</h3>
-				<input type="text" name="calories" placeholder="Number of calories" class="calorieField" value="{{ prevCalories }}">
+				<div class="calorieSection">
+					<h3 class="calorieMessage">Enter # of calories:</h3>
+					<input type="text" name="calories" placeholder="Number of calories" class="calorieField" value="{{ prevCalories }}">
+				</div>
+
 				<p class="required">{{ errCalories }}</p>
 
 				<div class="center-wrapper">
@@ -45,13 +48,13 @@
 
 			<table id="resultsTable" class="results" style="{{ tableVisiblity }}">
 				<tr>
-					<th>Menu Item</th>
-					<th>Calories</th>
+					<th class="menuCol">Menu Item</th>
+					<th class="calCol">Calories</th>
 				</tr>
 				{% for key,value in d.items %}
 					<tr>
 						<td>{{ key }}</td>
-						<td>{{ value }}</td>
+						<td class="calRow">{{ value }}</td>
 					</tr>
 				{% endfor %}
 			</table>

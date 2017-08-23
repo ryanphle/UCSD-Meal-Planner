@@ -6,6 +6,12 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<script>
+        function showImg() {
+            document.getElementById('loading').style.display="";
+            document.getElementById('resultsDiv').style.display="none";
+        }
+    </script>
 </head>
 <body>
 	<div class="center">
@@ -38,12 +44,17 @@
 				<p class="required">{{ errCalories }}</p>
 
 				<div class="center-wrapper">
-					<button type="submit" name="submit" class="submitBtn glow-button">Find Food!</button>
+					<button type="submit" name="submit" class="submitBtn glow-button" onclick="showImg()">Find Food!</button>
 				</div>
 			</form>
 		</div>
 
-		<div>
+		<div class="loading" id="loading" style="{{ loadingState }}"">
+			<img src="{% static 'hotdogboi.gif' %}" class="hotdogboi" id="hotdogboi">
+			<h2 class="hotdogMsg">Please wait while I find your food.</h2>
+		</div>
+
+		<div id="resultsDiv" style="display: ">
 			<p class="resultsMsg">{{ resultsMsg }}</p>
 
 			<table id="resultsTable" class="results" style="{{ tableVisiblity }}">

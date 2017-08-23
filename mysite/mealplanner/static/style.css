@@ -1,3 +1,115 @@
 body {
-    background-color: red;
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+a {
+	color: blue;
+}
+
+h3 {
+	color: lightblue;
+}
+
+.authorsNote {
+	text-align: center;
+}
+
+.calCol {
+	width: 250px;
+}
+
+.calRow {
+	text-align: center;
+}
+
+.calorieField {
+	width: 200px;
+	height: 40px;
+	font-size: 14px;
+	padding-left: 10px;
+	position: relative;
+	margin-left: 10px;
+}
+
+.calorieMessage {
+	float: left;
+	position: relative;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+    border: 3px solid lightblue;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.center-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.dininghalloptions {
+	text-align: center;
+}
+
+.glow-button:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 3px 13px #ffef5b;
+}
+
+.inputArea {
+	font-family: 'Quicksand', sans-serif;
+}
+
+
+.menuCol {
+	width: 400px;
+}
+
+.noresults {
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+}
+
+.option {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.required {
+	color: red;
+	text-align: center;
+}
+
+#resultsTable {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 14px;
+	margin-left: 50px;
+}
+
+.resultsMsg {
+	font-family: 'Quicksand', sans-serif;
+	text-align: center;
+}
+
+.submitBtn {
+	width: 350px;
+	height: 40px;
+	font-size: 18px;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 900;
+	border-radius: 7px;
+	background-color: lightblue;
+	color: white;
+	border: 0px solid;
+}
+
+.title {
+	font-family: 'Oswald', sans-serif;
+	text-align: center;
+	color: lightblue;
 }

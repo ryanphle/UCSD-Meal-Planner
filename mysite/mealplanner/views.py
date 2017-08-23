@@ -26,7 +26,8 @@ def home(request):
 	"""
 	Returns homepage as the landing page
 	"""
-	return render_to_response('homepage.html', {'tableVisiblity':"display: none;"})
+	return render_to_response('homepage.html', {'tableVisiblity':"display: none;", 
+		'loadingState':"display: none;"})
 
 @csrf_exempt
 def submit(request):
@@ -40,13 +41,16 @@ def submit(request):
 		# Checking if dining hall and calories is entered, return required message if not
 		if dininghall not in diningHallList and calories == "":
 			return render_to_response('homepage.html', {'reqDiningHall':reqDiningHallMsg, 
-				'errCalories':reqCaloriesMsg, 'tableVisiblity':"display: none;"})
+				'errCalories':reqCaloriesMsg, 'tableVisiblity':"display: none;", 
+				'loadingState':"display: none;"})
 		elif dininghall not in diningHallList:
 			return render_to_response('homepage.html', {'reqDiningHall':reqDiningHallMsg, 
-				'tableVisiblity':"display: none;", 'prevCalories':calories})
+				'tableVisiblity':"display: none;", 'prevCalories':calories,
+				'loadingState':"display: none;"})
 		elif calories == "":
 			return render_to_response('homepage.html', {'errCalories':reqCaloriesMsg, 
-				'tableVisiblity':"display: none;", 'selectedHall':dininghall})
+				'tableVisiblity':"display: none;", 'selectedHall':dininghall, 
+				'loadingState':"display:none"})
 
 		# Checking for incorrect calorie input
 		try:
@@ -54,7 +58,8 @@ def submit(request):
 		except Exception as e: 
 			print(e)
 			return render_to_response('homepage.html', {'errCalories':wrongFormatCalMsg%calories, 
-				'tableVisiblity':"display: none;", 'selectedHall':dininghall})
+				'tableVisiblity':"display: none;", 'selectedHall':dininghall, 
+				'loadingState':"display: none;"})
 
 
 		fullMenu = populateList(dininghall)
@@ -63,7 +68,7 @@ def submit(request):
 		if (fullMenu == {}):
 			return render_to_response('homepage.html', 
 				{'noresults':nofoodMsg%dininghall, 
-				'tableVisiblity':"display: none;"})
+				'tableVisiblity':"display: none;", 'loadingState':"display: none;"})
 
 		foodList = findFoods(fullMenu, calories)
 
@@ -71,11 +76,11 @@ def submit(request):
 		if (len(foodList) > 0):
 			return render_to_response('homepage.html', 
 				{'d':foodList, 'resultsMsg':resultsMsg%(dininghall, calories), 
-				'tableVisiblity':"display: visible;"})
+				'tableVisiblity':"display: visible;", 'loadingState':"display: none;"})
 		else:
 			return render_to_response('homepage.html', 
 				{'noresults':noResultsMsg%(dininghall, calories), 
-				'tableVisiblity':"display: none;"})
+				'tableVisiblity':"display: none;", 'loadingState':"display: none;"})
 
 	# Redirecting user to home page if went to link directly
 	else:

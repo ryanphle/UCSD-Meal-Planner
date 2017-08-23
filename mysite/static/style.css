@@ -61,10 +61,23 @@ h3 {
  box-shadow: 0 3px 13px #ffef5b;
 }
 
+.hotdogboi {
+	display: block;
+	margin: auto;
+	width: 25%;
+}
+
+.hotdogMsg {
+	text-align: center;
+}
+
 .inputArea {
 	font-family: 'Quicksand', sans-serif;
 }
 
+.loading {
+	position: relative;
+}
 
 .menuCol {
 	width: 400px;

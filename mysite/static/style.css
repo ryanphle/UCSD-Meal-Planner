@@ -14,16 +14,13 @@ h3 {
 .authorsNote {
 	text-align: center;
 }
-.submitBtn {
-	width: 350px;
-	height: 40px;
-	font-size: 18px;
-	font-family: 'Quicksand', sans-serif;
-	font-weight: 900;
-	border-radius: 7px;
-	background-color: lightblue;
-	color: white;
-	border: 2px solid ;
+
+.calCol {
+	width: 250px;
+}
+
+.calRow {
+	text-align: center;
 }
 
 .calorieField {
@@ -40,8 +37,6 @@ h3 {
 	position: relative;
 }
 
-
-
 .center {
 	margin: auto;
 	width: 50%;
@@ -57,28 +52,31 @@ h3 {
 	justify-content: center;
 }
 
-.title {
-	font-family: 'Oswald', sans-serif;
+.dininghalloptions {
 	text-align: center;
-	color: lightblue;
 }
 
 .inputArea {
 	font-family: 'Quicksand', sans-serif;
 }
 
-.dininghalloptions {
-	text-align: center;
+
+.menuCol {
+	width: 400px;
 }
 
-.required {
-	color: red;
-	text-align: center;
+.noresults {
+	font-family: 'Quicksand', sans-serif;
 }
 
 .option {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+.required {
+	color: red;
+	text-align: center;
 }
 
 #resultsTable {
@@ -91,18 +89,20 @@ h3 {
 	font-family: 'Quicksand', sans-serif;
 }
 
-.noresults {
+.submitBtn {
+	width: 350px;
+	height: 40px;
+	font-size: 18px;
 	font-family: 'Quicksand', sans-serif;
+	font-weight: 900;
+	border-radius: 7px;
+	background-color: lightblue;
+	color: white;
+	border: 2px solid ;
 }
 
-.menuCol {
-	width: 400px;
-}
-
-.calCol {
-	width: 250px;
-}
-
-.calRow {
+.title {
+	font-family: 'Oswald', sans-serif;
 	text-align: center;
+	color: lightblue;
 }

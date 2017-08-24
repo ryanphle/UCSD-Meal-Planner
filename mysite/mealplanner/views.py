@@ -61,7 +61,6 @@ def submit(request):
 				'tableVisiblity':"display: none;", 'selectedHall':dininghall, 
 				'loadingState':"display: none;"})
 
-
 		fullMenu = populateList(dininghall)
 
 		# Checking if there are any items on the menu in the first place

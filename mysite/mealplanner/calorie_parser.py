@@ -65,8 +65,14 @@ def findCalories(url, calorieLimit):
 
 	# Removing the Calories label and converting to int
 	numMarker = calories.find(' ')
-	calories = int(calories[numMarker+1:])
 
+	# Checks for error if page does not have calories
+	try:
+		calories = int(calories[numMarker+1:])
+	except Exception as e:
+		print(e)
+		return -1
+		
 	# Comparing the number of calories
 	if calories <= calorieLimit:
 		return calories
@@ -78,7 +84,7 @@ def findFoods(foodDict, calorieLimit):
 	Uses multiprocessing to open all links and zip lists of food names and calories into dict
 	"""
 	newFoodList = {}
-
+	print(type(calorieLimit))
 	# Multiprocessing part to open links and store into a list of calories
 	p = Pool(15)
 	calories = p.map(partial(findCalories, calorieLimit=calorieLimit), foodDict.values())

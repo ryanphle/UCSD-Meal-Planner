@@ -25,7 +25,7 @@ SECRET_KEY = 'x2i5qy^)3(gw1$uwqm*m-jd&8jcjozzv_ja=t&4rxt#n-*-$6k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ucsdmealplanner.pythonanywhere.com']
+ALLOWED_HOSTS = ['ucsdmealplanner.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition

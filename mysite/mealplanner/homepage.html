@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
-{% load static %}
 <head>
+	{% load static %}
 	<title>UCSD Meal Planner</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"/>
+	<link rel="icon" type="image/ico" href="{% static 'favicon.ico' %}">
 	<script>
         function showImg() {
             document.getElementById('loading').style.display="";
             document.getElementById('resultsDiv').style.display="none";
+            document.getElementById('errorMsg').style.display= "none";
         }
     </script>
 </head>
@@ -33,7 +35,7 @@
 					{% if selectedHall == "Foodworx" %} checked {% endif %}>Foodworx
 					<input type="radio" name="dininghall" value="OceanView Terrace" class="option"
 					{% if selectedHall == "OceanView Terrace" %} checked {% endif %}>OVT
-					<p class="required">{{ reqDiningHall }}</p>
+					<p class="required" id="errorMsg" style="display: ">{{ reqDiningHall }}</p>
 				</div>
 
 				<div class="calorieSection">
@@ -41,7 +43,7 @@
 					<input type="text" name="calories" placeholder="Number of calories" class="calorieField" value="{{ prevCalories }}">
 				</div>
 
-				<p class="required">{{ errCalories }}</p>
+				<p class="required" id="errorMsg" style="display: ">{{ errCalories }}</p>
 
 				<div class="center-wrapper">
 					<button type="submit" name="submit" class="submitBtn glow-button" onclick="showImg()">Find Food!</button>

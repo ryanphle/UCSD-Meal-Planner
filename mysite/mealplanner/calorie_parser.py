@@ -1,4 +1,4 @@
-from urllib import urlopen
+from urllib.request import urlopen
 from bs4 import BeautifulSoup, SoupStrainer
 from multiprocessing import Pool
 from functools import partial

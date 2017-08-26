@@ -1,5 +1,5 @@
 from urllib import urlopen
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, SoupStrainer
 from multiprocessing import Pool
 from functools import partial
 import re
@@ -24,8 +24,9 @@ def populateList(diningHall):
 	url = baseURL + diningHallCodes[diningHall]
 
 	try:
+		strainer = SoupStrainer('table', attrs={'id': 'MenuListing_tblDaily'})
 		namePage = urlopen(url) 
-		soup = BeautifulSoup(namePage, 'lxml')
+		soup = BeautifulSoup(namePage, 'lxml', parse_only=strainer)
 	except Exception as e: 
 		# Printing the error if thrown
 		print(e)
@@ -72,7 +73,7 @@ def findCalories(url, calorieLimit):
 	except Exception as e:
 		print(e)
 		return -1
-		
+
 	# Comparing the number of calories
 	if calories <= calorieLimit:
 		return calories
@@ -84,7 +85,7 @@ def findFoods(foodDict, calorieLimit):
 	Uses multiprocessing to open all links and zip lists of food names and calories into dict
 	"""
 	newFoodList = {}
-	print(type(calorieLimit))
+	
 	# Multiprocessing part to open links and store into a list of calories
 	p = Pool(15)
 	calories = p.map(partial(findCalories, calorieLimit=calorieLimit), foodDict.values())
